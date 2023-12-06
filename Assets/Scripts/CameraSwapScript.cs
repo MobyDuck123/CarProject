@@ -4,27 +4,41 @@ using UnityEngine;
 
 public class CameraSwapScript : MonoBehaviour
 {
-    public Camera firstCamera;
-    public Camera secondCamera;
+    public Camera thirdPersonCamera;
+    public Camera firstPersonCamera;
 
     void Start()
     {
         
-        secondCamera.enabled = false;
+        firstPersonCamera.enabled = false;
     }
 
     void Update()
     {
-       
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            ToggleCameras();
+            if (firstPersonCamera.enabled)
+            {
+                SwitchToThirdPerson();
+            }
+            else if (thirdPersonCamera.enabled)
+            {
+                SwitchToFirstPerson();
+            }
         }
     }
 
-    void ToggleCameras()
+    void SwitchToFirstPerson()
     {
-        firstCamera.enabled = !firstCamera.enabled;
-        secondCamera.enabled = !secondCamera.enabled;
+        
+        thirdPersonCamera.enabled = false;
+        firstPersonCamera.enabled = true;
+    }
+
+    void SwitchToThirdPerson()
+    {
+        
+        firstPersonCamera.enabled = false;
+        thirdPersonCamera.enabled = true;
     }
 }
