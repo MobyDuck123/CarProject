@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Player1 
-{ 
+namespace Player2
+{
 
-public class NewController : MonoBehaviour
+public class Player2 : MonoBehaviour
 {
     public float horizontalInput;
     public float verticalInput;
@@ -59,39 +59,17 @@ public class NewController : MonoBehaviour
         playerRb.MoveRotation(playerRb.rotation * turnRotation);
     }
 
-    public void GetInput()
-    {
-
-        if (Input.GetKey(KeyCode.A))
+        public void GetInput()
         {
-            horizontalInput = -1f;
-        }
+            horizontalInput = Input.GetKey(KeyCode.LeftArrow) ? -1f : (Input.GetKey(KeyCode.RightArrow) ? 1f : 0f);
 
-        else if (Input.GetKey(KeyCode.D))
-        {
-            horizontalInput = 1f;
+            verticalInput = Input.GetKey(KeyCode.UpArrow) ? 1f : 0f;
         }
-        else
-        {
-            horizontalInput = 0f;
-        }
-
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            verticalInput = 1f;
-        }
-        else
-        {
-            verticalInput = 0f;
-
-        }
-    }
 
 
         public void SetSpeed()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.RightShift))
         {
             speed = sprintSpeed;
         }
@@ -101,4 +79,5 @@ public class NewController : MonoBehaviour
         }
     }
 }
+
 }
